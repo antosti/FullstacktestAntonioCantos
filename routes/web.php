@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    
+    //Get all the petitions
+    $petitions = DB::table('petitions')->get();
+
+    //If the user is authenticated, it sends to home view. If not, it returns the welcome page
+    if(auth()->user())
+        return view('home', [
+            'petitions' => $petitions,
+        ]);
+    else {
+
+        return view('welcome', [
+            'petitions' => $petitions,
+        ]);
+    }
+
 });
 
 Auth::routes();

@@ -22,7 +22,7 @@ class PetitionFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->name,
+            'title' => $this->faker->word,
             'description'  => $this->faker->text,
             'user_id' => random_int(3,12),
         ];
