@@ -32,3 +32,7 @@ Route::get('/{id}', [App\Http\Controllers\PetitionController::class, 'viewPetiti
 Route::get('/sign/{user_id}/{petition_id}', [App\Http\Controllers\SignController::class, 'newSign'])->name('newSign');
 
 Route::post('/delete/{id}', [App\Http\Controllers\PetitionController::class, 'deletePetition'])->name('deletePetition');
+
+Route::post('/edit/{id}', [\App\Http\Controllers\PetitionController::class, 'editPetition'])->name('editPetition');
+
+Route::get('/edit/{id}', [\App\Http\Controllers\PetitionController::class, 'showEditPetition'])->name('showEditPetition');

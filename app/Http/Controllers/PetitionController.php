@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EditPetitionRequest;
+use App\Models\Petition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class PetitionController extends Controller
 {
+    //View petition function
     public function viewPetition($petition){
 
         $authenticated = auth()->user()->id;
@@ -31,6 +34,7 @@ class PetitionController extends Controller
 
     }
 
+    //Delete petition function
     public function deletePetition($petition){
         DB::table('petitionuser')->where('petition_id', $petition)->delete();
         DB::table('petitions')->where('id', $petition)->delete();
@@ -40,5 +44,24 @@ class PetitionController extends Controller
             'petitions' => $petitions,
         ]);
 
+    }
+
+    //Edit petition function
+    public function editPetition($petition, EditPetitionRequest $request){
+        $request->editPetition($petition);
+        $user = auth()->user();
+        $petitions = DB::table('petitions')
+            ->where('users_id', $user->id)->get();
+        return view('home', [
+            'petitions' => $petitions,
+        ]);
+
+    }
+
+    public function showEditPetition($petition){
+        $petitions = DB::table('petitions')->where('id', $petition)->first();
+        return view('editPetition',[
+            'petition' => $petitions,
+        ]);
     }
 }

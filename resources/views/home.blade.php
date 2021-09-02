@@ -23,8 +23,8 @@
                                 <div class="card-body">
                                     <p class="card-text"><?= $p->description?></p>
                                     <a href="{{route('viewPetition', $p->id)}}" class="btn btn-success">See the petition</a>
-                                    <a href="#" class="btn btn-warning">Edit petition</a>
-                                    <form class="text-center" action="{{ route('deletePetition', $p->id) }}" method="POST">
+                                    <a href="{{route('showEditPetition', $p->id)}}" class="btn btn-warning">Edit petition</a>
+                                    <form class="text-right" action="{{ route('deletePetition', $p->id) }}" method="POST">
                                         @csrf
                                         @method('POST')
                                         <button type="submit" class="m-3 btn btn-danger">Delete petition</button>
