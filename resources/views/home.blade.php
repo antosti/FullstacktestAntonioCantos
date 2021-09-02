@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Your petitions') }} <a href="#" class="btn btn-primary ml-5">Create petition</a></div>
+                <div class="card-header">{{ __('Your petitions') }} <a href="{{route('showNewPetition')}}" class="btn btn-primary ml-5">Create petition</a></div>
 
 
                 <div class="card-body">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreatePetitionRequest;
 use App\Http\Requests\EditPetitionRequest;
 use App\Models\Petition;
 use Illuminate\Http\Request;
@@ -63,5 +64,21 @@ class PetitionController extends Controller
         return view('editPetition',[
             'petition' => $petitions,
         ]);
+    }
+
+    public function showNewPetition(){
+        return view('newPetition');
+    }
+
+    public function newPetition(CreatePetitionRequest $request){
+
+        $request->createPetition();
+        $user = auth()->user();
+        $petitions = DB::table('petitions')
+            ->where('users_id', $user->id)->get();
+        return view('home', [
+            'petitions' => $petitions,
+        ]);
+
     }
 }
