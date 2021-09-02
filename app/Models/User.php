@@ -41,6 +41,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    //Function to declare the relation with eloquent
     public function petition(){
         return $this->hasMany(Petition::class);
     }

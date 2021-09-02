@@ -24,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //We get the user logged in with Auth to get all the petitions that user had created and pass it to the view
         $user = auth()->user();
         $petitions = DB::table('petitions')
                         ->where('users_id', $user->id)->get();

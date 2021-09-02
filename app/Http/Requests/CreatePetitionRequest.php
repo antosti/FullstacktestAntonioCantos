@@ -32,6 +32,7 @@ class CreatePetitionRequest extends FormRequest
         ];
     }
 
+    //Error messages in case that the value is not valid
     public function messages()
     {
         return [
@@ -40,6 +41,7 @@ class CreatePetitionRequest extends FormRequest
         ];
     }
 
+    //Function to create and save a petition with eloquent
     public function createPetition(){
         Petition::create([
             'title' => $this->title,

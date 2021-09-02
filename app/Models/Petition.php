@@ -20,6 +20,7 @@ class Petition extends Model
         'users_id',
     ];
 
+    //Function to declare the relation with eloquent
    public function user(){
        return $this->belongsTo(User::class);
    }

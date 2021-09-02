@@ -14,7 +14,6 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
                         @foreach ($petitions as $p)
                             <div class="card mt-3">
                                 <div class="card-header">

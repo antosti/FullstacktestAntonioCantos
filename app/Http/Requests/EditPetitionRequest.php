@@ -29,7 +29,7 @@ class EditPetitionRequest extends FormRequest
             'description' => 'required'
         ];
     }
-
+    //Error messages in case that the value is not valid
     public function messages()
     {
         return [
@@ -38,6 +38,7 @@ class EditPetitionRequest extends FormRequest
         ];
     }
 
+    //Function that finds the petition to edit, fill it with the new values and save it again in the database
     public function editPetition($petition){
         $edit = Petition::findOrFail($petition);
 
