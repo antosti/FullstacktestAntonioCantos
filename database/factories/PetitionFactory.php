@@ -24,7 +24,7 @@ class PetitionFactory extends Factory
         return [
             'title' => $this->faker->word,
             'description'  => $this->faker->text,
-            'user_id' => random_int(3,12),
+            'users_id' => random_int(1,12),
         ];
     }
 }

@@ -41,8 +41,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    //relation function with petition
     public function petition(){
-        return $this->belongsToMany(Petition::class);
+        return $this->hasMany(Petition::class);
     }
+
 }

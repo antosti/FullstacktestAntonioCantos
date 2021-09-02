@@ -16,7 +16,7 @@ class PetitionTable extends Migration
         Schema::create('petitions', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('users_id')->references('id')->on('users');
             $table->string('description');
             $table->timestamps();
         });

@@ -20,8 +20,8 @@ class Petition extends Model
         'user_id',
     ];
 
-    //relation function with users
-    public function user(){
-        return $this->belongsToMany(User::class);
-    }
+   public function user(){
+       return $this->belongsTo(User::class);
+   }
+
 }

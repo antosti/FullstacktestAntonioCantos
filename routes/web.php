@@ -15,24 +15,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    
+
     //Get all the petitions
     $petitions = DB::table('petitions')->get();
-
-    //If the user is authenticated, it sends to home view. If not, it returns the welcome page
-    if(auth()->user())
-        return view('home', [
-            'petitions' => $petitions,
-        ]);
-    else {
-
         return view('welcome', [
             'petitions' => $petitions,
         ]);
-    }
+
 
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/{id}', [App\Http\Controllers\PetitionController::class, 'viewPetition'])->name('viewPetition');
+Route::get('/sign/{user_id}/{petition_id}', [App\Http\Controllers\SignController::class, 'newSign'])->name('newSign');
+
+Route::post('/delete/{id}', [App\Http\Controllers\PetitionController::class, 'deletePetition'])->name('deletePetition');

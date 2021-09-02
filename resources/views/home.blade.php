@@ -5,7 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('Your petitions') }} <a href="#" class="btn btn-primary ml-5">Create petition</a></div>
+
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,16 +15,20 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
-
                         @foreach ($petitions as $p)
                             <div class="card mt-3">
                                 <div class="card-header">
-                                    <?= $p->title?>
+                                    <h5><?= $p->title?></h5>
                                 </div>
                                 <div class="card-body">
                                     <p class="card-text"><?= $p->description?></p>
-                                    <a href="#" class="btn btn-primary">See the petition</a>
+                                    <a href="{{route('viewPetition', $p->id)}}" class="btn btn-success">See the petition</a>
+                                    <a href="#" class="btn btn-warning">Edit petition</a>
+                                    <form class="text-center" action="{{ route('deletePetition', $p->id) }}" method="POST">
+                                        @csrf
+                                        @method('POST')
+                                        <button type="submit" class="m-3 btn btn-danger">Delete petition</button>
+                                    </form>
                                 </div>
                             </div>
                         @endforeach

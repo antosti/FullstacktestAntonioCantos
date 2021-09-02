@@ -15,7 +15,7 @@ class PetitionUserTable extends Migration
     {
         Schema::create('PetitionUser', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('users_id')->references('id')->on('users');
             $table->foreignId('petition_id')->references('id')->on('petitions');
         });
     }

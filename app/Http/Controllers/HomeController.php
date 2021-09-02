@@ -24,7 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $petitions = DB::table('petitions')->get();
+        $user = auth()->user();
+        $petitions = DB::table('petitions')
+                        ->where('users_id', $user->id)->get();
         return view('home', [
             'petitions' => $petitions,
         ]);
